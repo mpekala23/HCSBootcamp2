@@ -1,0 +1,10 @@
+<form action="{{ url_for('handle_input') }}" method="get">
+  Age: <input type="number" name="age"><br>
+  Height (cm): <input type="number" name="height"><br>
+  Weight (kg): <input type="number" name="weight"><br>
+  Gender:
+  <input type="radio" name="gender" value="1"> Male
+  <input type="radio" name="gender" value="0"> Female
+  <input type="radio" name="gender" value="0.5"> Other <br>
+  <input type="submit" value="Submit">
+</form>
