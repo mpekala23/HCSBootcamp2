@@ -65,17 +65,18 @@ plt.plot(list(range(1,40)), cv_scores)
 plt.show()
 """
 
+@app.route("/")
 @app.route("/home", methods=["GET"])
 def home():
     return render_template("home.html")
 
-@app.route("/handle_input", methods=["GET"])
-def handle_input():
+@app.route("/predict_sport", methods=["GET"])
+def predict_sport():
     classes = ["Gymnastics", "Swimming", "Athletics"]
     try:
-        values = [[float(request.args.get(component)) for component in ['gender', 'age', 'height', 'weight']]]
+        values = [[float(request.args.get(component)) for component in ['sex', 'age', 'height', 'weight']]]
     except TypeError:
-        return "ERROR: Need an age, height, weight, and gender parameter"
+        return "ERROR: Need an age, height, weight, and sex parameter"
 
     prediction = knn_classifier.predict(values)[0]
     return classes[prediction]
